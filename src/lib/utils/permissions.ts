@@ -26,6 +26,7 @@ export const ADMIN_PERMISSIONS = {
   EXPORT_ENQUIRIES: "export_enquiries",
   MANAGE_SETTINGS: "manage_settings",
   MANAGE_ADMIN_USERS: "manage_admin_users",
+  VIEW_CONSIGNMENTS: "view_consignments",
 } as const;
 
 const ROLE_PERMISSIONS: Record<AdminRole, string[]> = {

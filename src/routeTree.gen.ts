@@ -18,6 +18,7 @@ import { Route as DashboardSeoIndexRouteImport } from './routes/dashboard.seo.in
 import { Route as DashboardProductsIndexRouteImport } from './routes/dashboard.products.index'
 import { Route as DashboardEnquiriesIndexRouteImport } from './routes/dashboard.enquiries.index'
 import { Route as DashboardContentIndexRouteImport } from './routes/dashboard.content.index'
+import { Route as DashboardConsignmentsIndexRouteImport } from './routes/dashboard.consignments.index'
 import { Route as DashboardCategoriesIndexRouteImport } from './routes/dashboard.categories.index'
 import { Route as DashboardAgeRangesIndexRouteImport } from './routes/dashboard.age-ranges.index'
 import { Route as DashboardSettingsAdminUsersRouteImport } from './routes/dashboard.settings.admin-users'
@@ -31,6 +32,7 @@ import { Route as DashboardProductsCreateRouteImport } from './routes/dashboard.
 import { Route as DashboardProductsIdRouteImport } from './routes/dashboard.products.$id'
 import { Route as DashboardEnquiriesIdRouteImport } from './routes/dashboard.enquiries.$id'
 import { Route as DashboardContentHomepageRouteImport } from './routes/dashboard.content.homepage'
+import { Route as DashboardConsignmentsIdRouteImport } from './routes/dashboard.consignments.$id'
 import { Route as DashboardCategoriesIdRouteImport } from './routes/dashboard.categories.$id'
 import { Route as DashboardContentPagesIndexRouteImport } from './routes/dashboard.content.pages.index'
 import { Route as DashboardContentPagesSlugRouteImport } from './routes/dashboard.content.pages.$slug'
@@ -80,6 +82,12 @@ const DashboardContentIndexRoute = DashboardContentIndexRouteImport.update({
   path: '/content/',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardConsignmentsIndexRoute =
+  DashboardConsignmentsIndexRouteImport.update({
+    id: '/consignments/',
+    path: '/consignments/',
+    getParentRoute: () => DashboardRoute,
+  } as any)
 const DashboardCategoriesIndexRoute =
   DashboardCategoriesIndexRouteImport.update({
     id: '/categories/',
@@ -148,6 +156,11 @@ const DashboardContentHomepageRoute =
     path: '/content/homepage',
     getParentRoute: () => DashboardRoute,
   } as any)
+const DashboardConsignmentsIdRoute = DashboardConsignmentsIdRouteImport.update({
+  id: '/consignments/$id',
+  path: '/consignments/$id',
+  getParentRoute: () => DashboardRoute,
+} as any)
 const DashboardCategoriesIdRoute = DashboardCategoriesIdRouteImport.update({
   id: '/categories/$id',
   path: '/categories/$id',
@@ -172,6 +185,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/dashboard/categories/$id': typeof DashboardCategoriesIdRoute
+  '/dashboard/consignments/$id': typeof DashboardConsignmentsIdRoute
   '/dashboard/content/homepage': typeof DashboardContentHomepageRoute
   '/dashboard/enquiries/$id': typeof DashboardEnquiriesIdRoute
   '/dashboard/products/$id': typeof DashboardProductsIdRoute
@@ -185,6 +199,7 @@ export interface FileRoutesByFullPath {
   '/dashboard/settings/admin-users': typeof DashboardSettingsAdminUsersRoute
   '/dashboard/age-ranges/': typeof DashboardAgeRangesIndexRoute
   '/dashboard/categories/': typeof DashboardCategoriesIndexRoute
+  '/dashboard/consignments/': typeof DashboardConsignmentsIndexRoute
   '/dashboard/content/': typeof DashboardContentIndexRoute
   '/dashboard/enquiries/': typeof DashboardEnquiriesIndexRoute
   '/dashboard/products/': typeof DashboardProductsIndexRoute
@@ -198,6 +213,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/dashboard': typeof DashboardIndexRoute
   '/dashboard/categories/$id': typeof DashboardCategoriesIdRoute
+  '/dashboard/consignments/$id': typeof DashboardConsignmentsIdRoute
   '/dashboard/content/homepage': typeof DashboardContentHomepageRoute
   '/dashboard/enquiries/$id': typeof DashboardEnquiriesIdRoute
   '/dashboard/products/$id': typeof DashboardProductsIdRoute
@@ -211,6 +227,7 @@ export interface FileRoutesByTo {
   '/dashboard/settings/admin-users': typeof DashboardSettingsAdminUsersRoute
   '/dashboard/age-ranges': typeof DashboardAgeRangesIndexRoute
   '/dashboard/categories': typeof DashboardCategoriesIndexRoute
+  '/dashboard/consignments': typeof DashboardConsignmentsIndexRoute
   '/dashboard/content': typeof DashboardContentIndexRoute
   '/dashboard/enquiries': typeof DashboardEnquiriesIndexRoute
   '/dashboard/products': typeof DashboardProductsIndexRoute
@@ -226,6 +243,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/dashboard/categories/$id': typeof DashboardCategoriesIdRoute
+  '/dashboard/consignments/$id': typeof DashboardConsignmentsIdRoute
   '/dashboard/content/homepage': typeof DashboardContentHomepageRoute
   '/dashboard/enquiries/$id': typeof DashboardEnquiriesIdRoute
   '/dashboard/products/$id': typeof DashboardProductsIdRoute
@@ -239,6 +257,7 @@ export interface FileRoutesById {
   '/dashboard/settings/admin-users': typeof DashboardSettingsAdminUsersRoute
   '/dashboard/age-ranges/': typeof DashboardAgeRangesIndexRoute
   '/dashboard/categories/': typeof DashboardCategoriesIndexRoute
+  '/dashboard/consignments/': typeof DashboardConsignmentsIndexRoute
   '/dashboard/content/': typeof DashboardContentIndexRoute
   '/dashboard/enquiries/': typeof DashboardEnquiriesIndexRoute
   '/dashboard/products/': typeof DashboardProductsIndexRoute
@@ -255,6 +274,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/dashboard/'
     | '/dashboard/categories/$id'
+    | '/dashboard/consignments/$id'
     | '/dashboard/content/homepage'
     | '/dashboard/enquiries/$id'
     | '/dashboard/products/$id'
@@ -268,6 +288,7 @@ export interface FileRouteTypes {
     | '/dashboard/settings/admin-users'
     | '/dashboard/age-ranges/'
     | '/dashboard/categories/'
+    | '/dashboard/consignments/'
     | '/dashboard/content/'
     | '/dashboard/enquiries/'
     | '/dashboard/products/'
@@ -281,6 +302,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/dashboard'
     | '/dashboard/categories/$id'
+    | '/dashboard/consignments/$id'
     | '/dashboard/content/homepage'
     | '/dashboard/enquiries/$id'
     | '/dashboard/products/$id'
@@ -294,6 +316,7 @@ export interface FileRouteTypes {
     | '/dashboard/settings/admin-users'
     | '/dashboard/age-ranges'
     | '/dashboard/categories'
+    | '/dashboard/consignments'
     | '/dashboard/content'
     | '/dashboard/enquiries'
     | '/dashboard/products'
@@ -308,6 +331,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/dashboard/'
     | '/dashboard/categories/$id'
+    | '/dashboard/consignments/$id'
     | '/dashboard/content/homepage'
     | '/dashboard/enquiries/$id'
     | '/dashboard/products/$id'
@@ -321,6 +345,7 @@ export interface FileRouteTypes {
     | '/dashboard/settings/admin-users'
     | '/dashboard/age-ranges/'
     | '/dashboard/categories/'
+    | '/dashboard/consignments/'
     | '/dashboard/content/'
     | '/dashboard/enquiries/'
     | '/dashboard/products/'
@@ -399,6 +424,13 @@ declare module '@tanstack/react-router' {
       path: '/content'
       fullPath: '/dashboard/content/'
       preLoaderRoute: typeof DashboardContentIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/consignments/': {
+      id: '/dashboard/consignments/'
+      path: '/consignments'
+      fullPath: '/dashboard/consignments/'
+      preLoaderRoute: typeof DashboardConsignmentsIndexRouteImport
       parentRoute: typeof DashboardRoute
     }
     '/dashboard/categories/': {
@@ -492,6 +524,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardContentHomepageRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/consignments/$id': {
+      id: '/dashboard/consignments/$id'
+      path: '/consignments/$id'
+      fullPath: '/dashboard/consignments/$id'
+      preLoaderRoute: typeof DashboardConsignmentsIdRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/dashboard/categories/$id': {
       id: '/dashboard/categories/$id'
       path: '/categories/$id'
@@ -519,6 +558,7 @@ declare module '@tanstack/react-router' {
 interface DashboardRouteChildren {
   DashboardIndexRoute: typeof DashboardIndexRoute
   DashboardCategoriesIdRoute: typeof DashboardCategoriesIdRoute
+  DashboardConsignmentsIdRoute: typeof DashboardConsignmentsIdRoute
   DashboardContentHomepageRoute: typeof DashboardContentHomepageRoute
   DashboardEnquiriesIdRoute: typeof DashboardEnquiriesIdRoute
   DashboardProductsIdRoute: typeof DashboardProductsIdRoute
@@ -532,6 +572,7 @@ interface DashboardRouteChildren {
   DashboardSettingsAdminUsersRoute: typeof DashboardSettingsAdminUsersRoute
   DashboardAgeRangesIndexRoute: typeof DashboardAgeRangesIndexRoute
   DashboardCategoriesIndexRoute: typeof DashboardCategoriesIndexRoute
+  DashboardConsignmentsIndexRoute: typeof DashboardConsignmentsIndexRoute
   DashboardContentIndexRoute: typeof DashboardContentIndexRoute
   DashboardEnquiriesIndexRoute: typeof DashboardEnquiriesIndexRoute
   DashboardProductsIndexRoute: typeof DashboardProductsIndexRoute
@@ -544,6 +585,7 @@ interface DashboardRouteChildren {
 const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardIndexRoute: DashboardIndexRoute,
   DashboardCategoriesIdRoute: DashboardCategoriesIdRoute,
+  DashboardConsignmentsIdRoute: DashboardConsignmentsIdRoute,
   DashboardContentHomepageRoute: DashboardContentHomepageRoute,
   DashboardEnquiriesIdRoute: DashboardEnquiriesIdRoute,
   DashboardProductsIdRoute: DashboardProductsIdRoute,
@@ -557,6 +599,7 @@ const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardSettingsAdminUsersRoute: DashboardSettingsAdminUsersRoute,
   DashboardAgeRangesIndexRoute: DashboardAgeRangesIndexRoute,
   DashboardCategoriesIndexRoute: DashboardCategoriesIndexRoute,
+  DashboardConsignmentsIndexRoute: DashboardConsignmentsIndexRoute,
   DashboardContentIndexRoute: DashboardContentIndexRoute,
   DashboardEnquiriesIndexRoute: DashboardEnquiriesIndexRoute,
   DashboardProductsIndexRoute: DashboardProductsIndexRoute,
@@ -578,12 +621,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}

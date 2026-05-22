@@ -254,3 +254,52 @@ export interface ApiError {
   message: string;
   errors?: Record<string, string>;
 }
+export type ConsignmentStatus = "new" | "reviewed" | "offered" | "accepted" | "declined";
+
+export interface ConsignmentImage {
+  url: string;
+  publicId: string;
+  uploadedAt: Date;
+}
+
+export interface IConsignment {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  address?: string;
+  description: string;
+  images: ConsignmentImage[];
+  itemTitle?: string;
+  category?: string;
+  estimatedDate?: string;
+  condition?: string;
+  estimatedValue?: number;
+  status: ConsignmentStatus;
+  downloadedAt?: Date;
+  exportedAt?: Date;
+  ipAddress?: string;
+  userAgent?: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface ConsignmentsListResponse {
+  data: IConsignment[];
+  pagination: {
+    page: number;
+    limit: number;
+    total: number;
+    totalPages: number;
+    hasPrev: boolean;
+    hasNext: boolean;
+  };
+}
+
+export interface CloudinarySignatureResponse {
+  signature: string;
+  timestamp: number;
+  cloudName: string;
+  apiKey: string;
+}

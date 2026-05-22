@@ -130,7 +130,7 @@ export function GlobalSEOPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        {/* <Card>
           <CardHeader>
             <CardTitle className="text-base">Analytics & Indexing</CardTitle>
           </CardHeader>
@@ -174,7 +174,8 @@ export function GlobalSEOPage() {
               />
             </div>
           </CardContent>
-        </Card>
+        </Card> 
+        */}
 
         <Button type="submit" disabled={update.isPending}>
           {update.isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}

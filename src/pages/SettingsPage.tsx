@@ -141,7 +141,7 @@ export function SettingsPage() {
           </CardContent>
         </Card>
 
-        <Card>
+        {/* <Card>
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle className="text-base">Social Links</CardTitle>
             <Button
@@ -186,8 +186,8 @@ export function SettingsPage() {
               </div>
             ))}
           </CardContent>
-        </Card>
-
+        </Card> */}
+        {/* 
         <Card>
           <CardHeader>
             <CardTitle className="text-base">Business Hours</CardTitle>
@@ -250,7 +250,7 @@ export function SettingsPage() {
               />
             </div>
           </CardContent>
-        </Card>
+        </Card> */}
 
         <Button type="submit" disabled={update.isPending}>
           {update.isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}

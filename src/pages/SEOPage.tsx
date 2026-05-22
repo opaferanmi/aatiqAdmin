@@ -34,12 +34,12 @@ const TILES = [
     icon: Map,
     desc: "Generate and manage sitemap.xml",
   },
-  {
-    to: "/dashboard/seo/redirects",
-    title: "Redirects",
-    icon: ArrowRightLeft,
-    desc: "301/302 URL redirects",
-  },
+  // {
+  //   to: "/dashboard/seo/redirects",
+  //   title: "Redirects",
+  //   icon: ArrowRightLeft,
+  //   desc: "301/302 URL redirects",
+  // },
 ] as const;
 
 export function SEOPage() {

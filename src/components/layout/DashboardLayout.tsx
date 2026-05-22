@@ -85,6 +85,13 @@ const NAV: NavItem[] = [
     match: (p) => p.startsWith("/dashboard/enquiries"),
   },
   {
+    label: "Consignments",
+    to: "/dashboard/consignments",
+    icon: Inbox,
+    // permission: ADMIN_PERMISSIONS.VIEW_CONSIGNMENTS,
+    match: (p) => p.startsWith("/dashboard/consignments"),
+  },
+  {
     label: "Settings",
     to: "/dashboard/settings",
     icon: Settings,

@@ -5,12 +5,12 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export function ContentPage() {
   const tiles = [
-    {
-      to: "/dashboard/content/homepage",
-      title: "Homepage Editor",
-      desc: "Hero, sections, CTAs",
-      icon: Home,
-    },
+    // {
+    //   to: "/dashboard/content/homepage",
+    //   title: "Homepage Editor",
+    //   desc: "Hero, sections, CTAs",
+    //   icon: Home,
+    // },
     {
       to: "/dashboard/content/pages",
       title: "Static Pages",
