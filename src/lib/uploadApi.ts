@@ -15,7 +15,7 @@ async function uploadToCloudinary(
   const sigRes = await apiClient.post<{
     success: boolean;
     data: CloudinarySignatureResponse;
-  }>("/admin/uploads/signature", folder ? { folder } : {});
+  }>("/uploads/admin/signature", folder ? { folder } : {});
 
   const sig = sigRes.data?.data ?? (sigRes.data as unknown as CloudinarySignatureResponse);
 

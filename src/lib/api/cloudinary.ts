@@ -14,7 +14,7 @@ export async function uploadToCloudinary(
 ): Promise<{ url: string; publicId: string }> {
   // 1. Get signature from backend
   const sigRes = await apiClient.post<{ success: boolean; data: CloudinarySignatureResponse }>(
-    "/admin/uploads/signature",
+    "/uploads/admin/signature",
     folder ? { folder } : {},
   );
   const sig = sigRes.data?.data ?? (sigRes.data as unknown as CloudinarySignatureResponse);
