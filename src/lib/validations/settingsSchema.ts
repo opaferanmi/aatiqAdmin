@@ -33,6 +33,40 @@ export const settingsSchema = z.object({
     .default([]),
   logoUrl: z.string().optional(),
   faviconUrl: z.string().optional(),
+  shippingPolicy: z
+    .object({
+      isFree: z.boolean().default(true),
+      cost: z.coerce.number().optional(),
+      currency: z.string().default("GBP"),
+      countries: z.array(z.string()).default(["GB", "US", "CA"]),
+      handlingTimeDays: z
+        .object({
+          min: z.coerce.number().default(1),
+          max: z.coerce.number().default(3),
+        })
+        .default({ min: 1, max: 3 }),
+      transitTimeDays: z
+        .object({
+          min: z.coerce.number().default(3),
+          max: z.coerce.number().default(10),
+        })
+        .default({ min: 3, max: 10 }),
+    })
+    .default({
+      isFree: true,
+      currency: "GBP",
+      countries: ["GB", "US", "CA"],
+      handlingTimeDays: { min: 1, max: 3 },
+      transitTimeDays: { min: 3, max: 10 },
+    }),
+  returnPolicy: z
+    .object({
+      returnDays: z.coerce.number().default(14),
+      returnFees: z
+        .enum(["FreeReturn", "ReturnShippingFees", "ReturnFeesCustomerResponsibility"])
+        .default("ReturnFeesCustomerResponsibility"),
+    })
+    .default({ returnDays: 14, returnFees: "ReturnFeesCustomerResponsibility" }),
 });
 export type SettingsFormValues = z.input<typeof settingsSchema>;
 

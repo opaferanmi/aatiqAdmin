@@ -28,7 +28,6 @@ const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
 export function SettingsPage() {
   const { data, isLoading } = useSiteSettings();
   const update = useUpdateSiteSettings();
-
   const form = useForm<SettingsFormValues>({
     resolver: zodResolver(settingsSchema),
     defaultValues: {
@@ -43,6 +42,17 @@ export function SettingsPage() {
         closeTime: "17:00",
         isClosed: false,
       })),
+      shippingPolicy: {
+        isFree: true,
+        currency: "GBP",
+        countries: ["GB", "US", "CA"],
+        handlingTimeDays: { min: 1, max: 3 },
+        transitTimeDays: { min: 3, max: 10 },
+      },
+      returnPolicy: {
+        returnDays: 14,
+        returnFees: "ReturnFeesCustomerResponsibility",
+      },
     },
   });
 
@@ -137,6 +147,111 @@ export function SettingsPage() {
             <div className="space-y-1.5 sm:col-span-2">
               <Label>Support Hours</Label>
               <Input {...form.register("supportHours")} placeholder="Mon-Fri 9am-5pm" />
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base">Shipping</CardTitle>
+          </CardHeader>
+          <CardContent className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div className="flex items-center gap-3 sm:col-span-2">
+              <Controller
+                control={form.control}
+                name="shippingPolicy.isFree"
+                render={({ field }) => (
+                  <Switch checked={field.value} onCheckedChange={field.onChange} />
+                )}
+              />
+              <Label>Free shipping</Label>
+            </div>
+            <div className="space-y-1.5">
+              <Label>Shipping Cost (if not free)</Label>
+              <Input type="number" {...form.register("shippingPolicy.cost")} />
+            </div>
+            <div className="space-y-1.5">
+              <Label>Currency</Label>
+              <Input {...form.register("shippingPolicy.currency")} placeholder="GBP" />
+            </div>
+            <div className="space-y-1.5 sm:col-span-2">
+              <Label>Ship-to Countries (comma-separated ISO codes)</Label>
+              <Input
+                defaultValue={form.getValues("shippingPolicy.countries")?.join(", ")}
+                onChange={(e) =>
+                  form.setValue(
+                    "shippingPolicy.countries",
+                    e.target.value
+                      .split(",")
+                      .map((s) => s.trim().toUpperCase())
+                      .filter(Boolean),
+                  )
+                }
+                placeholder="GB, US, CA"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <Label>Handling Time (days)</Label>
+              <div className="flex gap-2">
+                <Input
+                  type="number"
+                  placeholder="Min"
+                  {...form.register("shippingPolicy.handlingTimeDays.min")}
+                />
+                <Input
+                  type="number"
+                  placeholder="Max"
+                  {...form.register("shippingPolicy.handlingTimeDays.max")}
+                />
+              </div>
+            </div>
+            <div className="space-y-1.5">
+              <Label>Transit Time (days)</Label>
+              <div className="flex gap-2">
+                <Input
+                  type="number"
+                  placeholder="Min"
+                  {...form.register("shippingPolicy.transitTimeDays.min")}
+                />
+                <Input
+                  type="number"
+                  placeholder="Max"
+                  {...form.register("shippingPolicy.transitTimeDays.max")}
+                />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base">Returns</CardTitle>
+          </CardHeader>
+          <CardContent className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div className="space-y-1.5">
+              <Label>Return Window (days)</Label>
+              <Input type="number" {...form.register("returnPolicy.returnDays")} />
+            </div>
+            <div className="space-y-1.5">
+              <Label>Who Pays Return Shipping</Label>
+              <Controller
+                control={form.control}
+                name="returnPolicy.returnFees"
+                render={({ field }) => (
+                  <Select value={field.value} onValueChange={field.onChange}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="FreeReturn">Free (seller pays)</SelectItem>
+                      <SelectItem value="ReturnShippingFees">Seller pays return fees</SelectItem>
+                      <SelectItem value="ReturnFeesCustomerResponsibility">
+                        Customer pays
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                )}
+              />
             </div>
           </CardContent>
         </Card>

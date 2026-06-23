@@ -48,6 +48,7 @@ export function ProductForm({ defaultValues, submitting, submitLabel = "Save", o
       images: defaultValues?.images ?? [],
       specifications: defaultValues?.specifications ?? {},
       ageRangeId: defaultValues?.ageRangeId ?? "",
+      brand: defaultValues?.brand ?? "",
       ageRangeLabel: defaultValues?.ageRangeLabel ?? "",
       yearEstimate: defaultValues?.yearEstimate ?? { startYear: undefined, endYear: undefined },
       isAvailable: defaultValues?.isAvailable ?? true,
@@ -110,6 +111,16 @@ export function ProductForm({ defaultValues, submitting, submitLabel = "Save", o
                   <p className="text-xs text-destructive">
                     {form.formState.errors.itemNumber.message}
                   </p>
+                )}
+              </div>
+              <div className="space-y-1.5">
+                <Label>Brand / Maker</Label>
+                <Input
+                  placeholder="e.g. Tiffany & Co. (leave blank if unknown)"
+                  {...form.register("brand")}
+                />
+                {form.formState.errors.brand && (
+                  <p className="text-xs text-destructive">{form.formState.errors.brand.message}</p>
                 )}
               </div>
               <div className="space-y-1.5">

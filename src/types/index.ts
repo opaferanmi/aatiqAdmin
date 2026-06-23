@@ -56,6 +56,7 @@ export interface Product {
   isAvailable: boolean;
   isFeatured: boolean;
   isHighlight?: boolean;
+  brand?: string;
   ageRangeId?: string;
   ageRangeLabel?: string;
   yearEstimate?: { startYear?: number; endYear?: number };
