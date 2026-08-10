@@ -86,5 +86,6 @@ export default apiClient;
 
 export function getApiErrorMessage(err: unknown, fallback = "Something went wrong"): string {
   const e = err as AxiosError<{ message?: string; error?: { message?: string } }>;
-  return e?.response?.data?.message ?? e?.response?.data?.error?.message ?? e?.message ?? fallback;
+  // Only surface explicit API-level messages from the response body — never raw network/Axios errors
+  return e?.response?.data?.message ?? e?.response?.data?.error?.message ?? fallback;
 }

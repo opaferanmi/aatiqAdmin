@@ -116,9 +116,6 @@ export function LoginPage() {
           </Button>
         </form>
 
-        <p className="mt-6 text-center text-xs text-muted-foreground">
-          Backend: {import.meta.env.VITE_API_URL ?? "http://localhost:5000"}
-        </p>
       </div>
     </div>
   );

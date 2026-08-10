@@ -258,7 +258,20 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
 
       <div className="lg:pl-64">
         <Header onOpenSidebar={() => setMobileOpen(true)} />
-        <main className="px-4 py-6 lg:px-8 lg:py-8">{children}</main>
+        <main className="px-4 py-6 lg:px-8 lg:py-8 min-h-[calc(100vh-4rem)] flex flex-col">
+          <div className="flex-1">{children}</div>
+          <footer className="mt-8 pt-4 border-t border-border/50 text-center text-xs text-muted-foreground/70">
+            Website designed &amp; developed by{" "}
+            <a
+              href="https://www.upwork.com/freelancers/~01700c62beb4fd95f1?mp_source=share"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors"
+            >
+              FOWORG
+            </a>
+          </footer>
+        </main>
       </div>
     </div>
   );

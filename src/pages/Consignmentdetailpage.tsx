@@ -39,7 +39,6 @@ export function ConsignmentDetailPage() {
   const [status, setStatus] = useState<ConsignmentStatus>("new");
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
-  console.log("Consignment data:", data);
 
   useEffect(() => {
     if (data) setStatus(data.status);
